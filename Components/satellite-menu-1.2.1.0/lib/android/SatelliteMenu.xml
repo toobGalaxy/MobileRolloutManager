@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SatelliteMenu</name>
+    </assembly>
+    <members>
+        <member name="T:SatelliteMenu.PopoutAnimationFactory">
+            <summary>
+            Popout animation factory creates parts of the popout bounce animation pieces from the resource definitions.
+            </summary>
+        </member>
+        <member name="T:SatelliteMenu.SatelliteMenuButton">
+            <summary>
+            Popout menu button control, mimics the Path 2.0 menu system with the collection of buttons.
+            </summary>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.ItemsAngle">
+            <summary>
+            Gets or sets the degree between the first and the last item.
+            </summary>
+            <value>
+            The degree.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.Radius">
+            <summary>
+            Gets or sets the distance of items from the center button.
+            </summary>
+            <value>
+            The radius.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.Speed">
+            <summary>
+            Gets or sets the duration of expand and collapse operations in milliseconds.
+            </summary>
+            <value>
+            The speed.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.CloseItemsOnClick">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:SatelliteMenu.SatelliteMenuButton" /> close items on click.
+            </summary>
+            <value>
+                <c>true</c> if close items on click; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(Android.Content.Context)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="context">
+            Context.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(Android.Content.Context,Android.Util.IAttributeSet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="context">
+            Context.
+            </param>
+            <param name="attrs">
+            Attrs.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(Android.Content.Context,Android.Util.IAttributeSet,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="context">
+            Context.
+            </param>
+            <param name="attrs">
+            Attrs.
+            </param>
+            <param name="style">
+            Style.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.Initialize(Android.Content.Context,Android.Util.IAttributeSet,System.Int32)">
+            <summary>
+            Initialize the specified context, attrs and style.
+            </summary>
+            <param name="context">
+            Context.
+            </param>
+            <param name="attrs">
+            Attrs.
+            </param>
+            <param name="style">
+            Style.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.GetDegrees(System.Int32,System.Single)">
+            <summary>
+            Default provider for degrees between items. For number of items up to 3 tries to keep items centered in the given total degrees. For number equal and bigger than four, distirbutes evenly using min and max degrees.
+            </summary>
+        </member>
+        <member name="E:SatelliteMenu.SatelliteMenuButton.MenuItemClick">
+            <summary>
+            Occurs when menu item is being touched by the user.
+            </summary>
+        </member>
+        <member name="T:SatelliteMenu.SatelliteMenuButtonItem">
+            <summary>
+            Popout menu button item definition, used to initiate the menu button.
+            </summary>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="tag">
+            Identifier.
+            </param>
+            <param name="imgResourceId">
+            Image resource identifier.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(System.Int32,Android.Graphics.Drawables.Drawable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="tag">
+            Identifier.
+            </param>
+            <param name="imgDrawable">
+            Image drawable.
+            </param>
+        </member>
+    </members>
+</doc>

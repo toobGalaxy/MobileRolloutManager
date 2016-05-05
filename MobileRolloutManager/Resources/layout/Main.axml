@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal">
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout1"
+        android:layout_centerInParent="true" />
+    <ImageView
+        android:src="@drawable/rolloutmanager"
+        android:layout_width="384.0dp"
+        android:layout_height="213.0dp"
+        android:id="@+id/imageView1"
+        android:layout_marginBottom="0.0dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_marginLeft="0.0dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="0.0dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Text" />
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50px">
+            <TextView
+                android:text="User:"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:layout_centerInParent="true"
+                android:id="@+id/textView10" />
+            <EditText
+                android:layout_column="1"
+                android:id="@+id/user"
+                android:layout_centerInParent="true"
+                android:layout_width="290.0dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50px">
+            <TextView
+                android:text="Password:"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="0"
+                android:id="@+id/textView11"
+                android:layout_height="33.0dp" />
+            <EditText
+                android:inputType="textPassword"
+                android:layout_centerInParent="true"
+                android:layout_column="1"
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/MyButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Hello" />
+</LinearLayout>

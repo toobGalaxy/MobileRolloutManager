@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="NutiteqMapsSDK">
+  <name>Nutiteq Maps SDK by CartoDB</name>
+  <publisher>CartoDB</publisher>
+  <publisher-url>http://developer.nutiteq.com</publisher-url>
+  <version>3.2.4</version>
+  <summary>Offline Maps component</summary>
+  <samples>
+    <sample id="hellomap-xamarin">
+      <name>Nutiteq Maps SDK samples</name>
+      <summary>iOs and Android apps with shared code</summary>
+    </sample>
+  </samples>
+</component>

@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SatelliteMenu</name>
+    </assembly>
+    <members>
+        <member name="T:SatelliteMenu.SatelliteMenuButton">
+            <summary>
+            Popout menu button control, mimics the Path 2.0 menu system with the collection of buttons. Simply add the SatelliteMenuView to the view and add items/buttons, it will take care of the animation and item placing.
+            </summary>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.Radius">
+            <summary>
+            Gets or sets the radius - the distance of button items from the menu center button, default is 120.
+            </summary>
+            <value>
+            The actual radius.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.Speed">
+            <summary>
+            Gets or sets the speed of the expand / collapse animation, default is .15
+            </summary>
+            <value>
+            The speed.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.Bounce">
+            <summary>
+            Gets or sets the value of bounce effect, default is .225
+            </summary>
+            <value>
+            The bounce.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.BounceSpeed">
+            <summary>
+            Gets or sets the bounce speed effect, default is .1
+            </summary>
+            <value>
+            The bounce speed.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.RotateToSide">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="!:Xamarin.MonoTouch.Controls.SatelliteMenuButton" /> rotate to side when pressed. It is useful for round buttons.
+            </summary>
+            <value>
+                <c>true</c> if rotate to side; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButton.CloseItemsOnClick">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="!:Xamarin.MonoTouch.Controls.SatelliteMenuButton" /> close items
+            on click.
+            </summary>
+            <value>
+                <c>true</c> if close items on click; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(MonoTouch.UIKit.UIButton[],System.Drawing.RectangleF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Xamarin.MonoTouch.Controls.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="buttonItems">
+            Button items that construct the actual menu system.
+            </param>
+            <param name="rect">
+            Rectangle for the menu button to place the button, it is needed to be set up at this point as we will be placing the button items under the menu button.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(MonoTouch.UIKit.UIView,MonoTouch.UIKit.UIImage,SatelliteMenu.SatelliteMenuButtonItem[],System.Drawing.RectangleF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Xamarin.MonoTouch.Controls.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="parentView">
+            Parent view to which crated items will be added
+            </param>
+            <param name="menuButtonImage">
+            Actual image of the menu button.
+            </param>
+            <param name="menuItems">
+            Menu items.
+            </param>
+            <param name="rect">
+            Rect.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.#ctor(MonoTouch.UIKit.UIView,MonoTouch.UIKit.UIImage,System.Drawing.RectangleF)">
+            <summary>
+            Initializes a new instance of the <see cref="!:Xamarin.MonoTouch.Controls.SatelliteMenuButton" /> class.
+            </summary>
+            <param name="parentView">
+            Parent view to which crated items will be added
+            </param>
+            <param name="menuButtonImage">
+            Actual image of the menu button.
+            </param>
+            <param name="rect">
+            Rect.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.Initialize">
+            <summary>
+            Initialize this instance. Allows inherited classes to intercept the initialization and perform their own.
+            </summary>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.Expand">
+            <summary>
+            Expands the menu and shows the button menu items.
+            </summary>.</member>
+        <member name="M:SatelliteMenu.SatelliteMenuButton.Collapse">
+            <summary>
+            Collapses the menu and hides the button menu items.
+            </summary>
+        </member>
+        <member name="E:SatelliteMenu.SatelliteMenuButton.MenuItemClick">
+            <summary>
+            Occurs when menu item is being touched by the user.
+            </summary>
+        </member>
+        <member name="T:SatelliteMenu.SatelliteMenuButtonItem">
+            <summary>
+            Popout menu button item definition, used to initiate the menu button.
+            </summary>
+        </member>
+        <member name="F:SatelliteMenu.SatelliteMenuButtonItem.itemImage">
+            <summary>
+            Gets or sets the item image.
+            </summary>
+            <value>
+            The item image.
+            </value>
+        </member>
+        <member name="E:SatelliteMenu.SatelliteMenuButtonItem.Click">
+            <summary>
+            Occurs when user uses the menu item.
+            </summary>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButtonItem.Tag">
+            <summary>
+            Gets or sets the tag.
+            </summary>
+            <value>
+            The tag.
+            </value>
+        </member>
+        <member name="P:SatelliteMenu.SatelliteMenuButtonItem.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(MonoTouch.UIKit.UIImage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="itemImage">
+            Item image.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(MonoTouch.UIKit.UIImage,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="itemImage">
+            Item image.
+            </param>
+            <param name="tag">
+            Tag.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(MonoTouch.UIKit.UIImage,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="itemImage">
+            Item image.
+            </param>
+            <param name="name">
+            Name.
+            </param>
+        </member>
+        <member name="M:SatelliteMenu.SatelliteMenuButtonItem.#ctor(MonoTouch.UIKit.UIImage,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SatelliteMenu.SatelliteMenuButtonItem" /> class.
+            </summary>
+            <param name="itemImage">
+            Item image.
+            </param>
+            <param name="tag">
+            Tag.
+            </param>
+            <param name="name">
+            Name.
+            </param>
+        </member>
+    </members>
+</doc>
