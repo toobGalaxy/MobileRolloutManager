@@ -1,270 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableLayout1">
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_height="35.0dp">
-            <Button
-                android:text="Back"
-                android:layout_column="0"
-                android:id="@+id/allsitesBack"
-                android:layout_marginBottom="0.0dp"
-                android:layout_marginRight="0.0dp" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableLayout1">
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_height="wrap_content">
-            <Button
-                android:text="Directions"
-                android:layout_column="0"
-                android:id="@+id/DirectionsToSite"
-                android:drawableBottom="@drawable/map"
-                android:layout_marginBottom="12.7dp"
-                android:layout_marginTop="0.0dp"
-                android:layout_marginRight="0.0dp"
-                android:layout_width="115.3dp" />
-            <Button
-                android:text="Installation"
-                android:layout_column="1"
-                android:id="@+id/StartInstall"
-                android:layout_marginBottom="0.0dp"
-                android:drawableBottom="@drawable/menu"
-                android:layout_width="128.0dp" />
-            <Button
-                android:text="Edit Details"
-                android:layout_column="2"
-                android:id="@+id/button3"
-                android:drawableBottom="@drawable/edit" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableLayout1">
-        <TableRow
-            android:id="@+id/tableRow3">
-            <TextView
-                android:text="Project:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView10" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Project"
-                android:layout_width="196.0dp" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow4">
-            <TextView
-                android:text="Client:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView11" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Client" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow5">
-            <TextView
-                android:text="Site:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView12" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Site" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow26">
-            <TextView
-                android:text="Site Status:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView26" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/SiteStatus"
-                android:layout_width="196.0dp" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow6">
-            <TextView
-                android:text="Site Id:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView13" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/SiteId" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow13">
-            <TextView
-                android:text="Site Tel:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView14" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/SiteTel" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow14">
-            <TextView
-                android:text="Contact Person:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView15"
-                android:layout_width="144.7dp" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/ContactPerson" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow15">
-            <TextView
-                android:text="Person Tel:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView16" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/PersonTel" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow7">
-            <TextView
-                android:text="Latitude:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView17" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Latitude" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow8">
-            <TextView
-                android:text="Longitude:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView18" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Longitude" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow9">
-            <TextView
-                android:text="Address1:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView19" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Address1" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow10">
-            <TextView
-                android:text="Address2:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView20" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Address2" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow11">
-            <TextView
-                android:text="Address3:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/Address3" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/textView63" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow12">
-            <TextView
-                android:text="Address4:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="0"
-                android:id="@+id/textView22" />
-            <TextView
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_column="2"
-                android:id="@+id/Address4" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tableLayout2">
-        <TableRow
-            android:id="@+id/tableRow28">
-            <Button
-                android:text="Dial Site"
-                android:layout_column="0"
-                android:id="@+id/button4"
-                android:drawableBottom="@drawable/dial" />
-            <Button
-                android:text="Dial Person"
-                android:layout_column="1"
-                android:id="@+id/button5"
-                android:drawableBottom="@drawable/person" />
-            <Button
-                android:text="Site Notes"
-                android:layout_column="2"
-                android:id="@+id/button6"
-                android:drawableBottom="@drawable/notes" />
-        </TableRow>
-    </TableLayout>
-</LinearLayout>
+        android:layout_height="match_parent">
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_height="35.0dp"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="156.0dp">
+                <Button
+                    android:text="Back"
+                    android:layout_column="0"
+                    android:id="@+id/allsitesBack"
+                    android:layout_marginBottom="0.0dp"
+                    android:layout_marginRight="0.0dp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Directions"
+                    android:layout_column="0"
+                    android:id="@+id/DirectionsToSite"
+                    android:drawableBottom="@drawable/map"
+                    android:layout_marginBottom="12.7dp"
+                    android:layout_marginTop="0.0dp"
+                    android:layout_marginRight="0.0dp"
+                    android:layout_width="115.3dp" />
+                <Button
+                    android:text="Installation"
+                    android:layout_column="1"
+                    android:id="@+id/StartInstall"
+                    android:layout_marginBottom="0.0dp"
+                    android:drawableBottom="@drawable/menu"
+                    android:layout_width="128.0dp" />
+                <Button
+                    android:text="Edit Details"
+                    android:layout_column="2"
+                    android:id="@+id/button3"
+                    android:drawableBottom="@drawable/edit" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow3">
+                <TextView
+                    android:text="Project:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView10" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Project"
+                    android:layout_width="196.0dp" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow4">
+                <TextView
+                    android:text="Client:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView11" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Client" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow5">
+                <TextView
+                    android:text="Site:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView12" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Site" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow26">
+                <TextView
+                    android:text="Site Status:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView26" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/SiteStatus"
+                    android:layout_width="196.0dp" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow6">
+                <TextView
+                    android:text="Site Id:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView13" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/SiteId" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow13">
+                <TextView
+                    android:text="Site Tel:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView14" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/SiteTel" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow14">
+                <TextView
+                    android:text="Contact Person:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView15"
+                    android:layout_width="144.7dp" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/ContactPerson" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow15">
+                <TextView
+                    android:text="Person Tel:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView16" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/PersonTel" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow7">
+                <TextView
+                    android:text="Latitude:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView17" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Latitude" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow8">
+                <TextView
+                    android:text="Longitude:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView18" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Longitude" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow9">
+                <TextView
+                    android:text="Address1:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView19" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Address1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow10">
+                <TextView
+                    android:text="Address2:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/textView20" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Address2" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow11">
+                <TextView
+                    android:text="Address3:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="0"
+                    android:id="@+id/AddressText" />
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="2"
+                    android:id="@+id/Address3" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout2">
+            <TableRow
+                android:id="@+id/tableRow28">
+                <Button
+                    android:text="Dial Site"
+                    android:layout_column="0"
+                    android:id="@+id/button4"
+                    android:drawableBottom="@drawable/dial" />
+                <Button
+                    android:text="Dial Person"
+                    android:layout_column="1"
+                    android:id="@+id/button5"
+                    android:drawableBottom="@drawable/person" />
+                <Button
+                    android:text="Site Notes"
+                    android:layout_column="2"
+                    android:id="@+id/button6"
+                    android:drawableBottom="@drawable/notes" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

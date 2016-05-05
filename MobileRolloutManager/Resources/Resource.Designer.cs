@@ -379,11 +379,11 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070043
 			public const int Address2 = 2131165251;
 			
-			// aapt resource value: 0x7f070045
-			public const int Address3 = 2131165253;
+			// aapt resource value: 0x7f070046
+			public const int Address3 = 2131165254;
 			
-			// aapt resource value: 0x7f070049
-			public const int Address4 = 2131165257;
+			// aapt resource value: 0x7f070045
+			public const int AddressText = 2131165253;
 			
 			// aapt resource value: 0x7f070025
 			public const int Client = 2131165221;
@@ -439,20 +439,20 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
-			// aapt resource value: 0x7f07004f
-			public const int btn_allSites = 2131165263;
+			// aapt resource value: 0x7f07004c
+			public const int btn_allSites = 2131165260;
 			
 			// aapt resource value: 0x7f070022
 			public const int button3 = 2131165218;
 			
-			// aapt resource value: 0x7f07004c
-			public const int button4 = 2131165260;
+			// aapt resource value: 0x7f070049
+			public const int button4 = 2131165257;
 			
-			// aapt resource value: 0x7f07004d
-			public const int button5 = 2131165261;
+			// aapt resource value: 0x7f07004a
+			public const int button5 = 2131165258;
 			
-			// aapt resource value: 0x7f07004e
-			public const int button6 = 2131165262;
+			// aapt resource value: 0x7f07004b
+			public const int button6 = 2131165259;
 			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
@@ -472,17 +472,17 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07001d
 			public const int linearLayout1 = 2131165213;
 			
-			// aapt resource value: 0x7f070051
-			public const int list = 2131165265;
+			// aapt resource value: 0x7f07004e
+			public const int list = 2131165262;
 			
-			// aapt resource value: 0x7f070053
-			public const int list2 = 2131165267;
+			// aapt resource value: 0x7f070050
+			public const int list2 = 2131165264;
 			
 			// aapt resource value: 0x7f070014
 			public const int list3 = 2131165204;
 			
-			// aapt resource value: 0x7f070050
-			public const int map = 2131165264;
+			// aapt resource value: 0x7f07004d
+			public const int map = 2131165261;
 			
 			// aapt resource value: 0x7f07001f
 			public const int mapF = 2131165215;
@@ -514,8 +514,8 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07000d
 			public const int tableLayout1 = 2131165197;
 			
-			// aapt resource value: 0x7f07004a
-			public const int tableLayout2 = 2131165258;
+			// aapt resource value: 0x7f070047
+			public const int tableLayout2 = 2131165255;
 			
 			// aapt resource value: 0x7f07000e
 			public const int tableRow1 = 2131165198;
@@ -525,9 +525,6 @@ namespace MobileRolloutManager
 			
 			// aapt resource value: 0x7f070044
 			public const int tableRow11 = 2131165252;
-			
-			// aapt resource value: 0x7f070047
-			public const int tableRow12 = 2131165255;
 			
 			// aapt resource value: 0x7f07002f
 			public const int tableRow13 = 2131165231;
@@ -544,8 +541,8 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070029
 			public const int tableRow26 = 2131165225;
 			
-			// aapt resource value: 0x7f07004b
-			public const int tableRow28 = 2131165259;
+			// aapt resource value: 0x7f070048
+			public const int tableRow28 = 2131165256;
 			
 			// aapt resource value: 0x7f070012
 			public const int tableRow3 = 2131165202;
@@ -604,20 +601,14 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07003f
 			public const int textView19 = 2131165247;
 			
-			// aapt resource value: 0x7f070052
-			public const int textView2 = 2131165266;
+			// aapt resource value: 0x7f07004f
+			public const int textView2 = 2131165263;
 			
 			// aapt resource value: 0x7f070042
 			public const int textView20 = 2131165250;
 			
-			// aapt resource value: 0x7f070048
-			public const int textView22 = 2131165256;
-			
 			// aapt resource value: 0x7f07002a
 			public const int textView26 = 2131165226;
-			
-			// aapt resource value: 0x7f070046
-			public const int textView63 = 2131165254;
 			
 			// aapt resource value: 0x7f070019
 			public const int user = 2131165209;

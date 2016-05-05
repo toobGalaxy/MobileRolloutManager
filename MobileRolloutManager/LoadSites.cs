@@ -239,7 +239,27 @@ namespace MobileRolloutManager
                 progressDialog.Indeterminate = true;
                 progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
                 SetContentView(Resource.Layout.SiteDetails);
+                TextView ProjectV = FindViewById<TextView>(Resource.Id.Project);
+                TextView ClientV = FindViewById<TextView>(Resource.Id.Client);
+                TextView SiteV = FindViewById<TextView>(Resource.Id.Site);
 
+                TextView SiteStatusV = FindViewById<TextView>(Resource.Id.SiteStatus);
+
+                TextView SiteIdV = FindViewById<TextView>(Resource.Id.SiteId);
+
+                TextView SiteTelV = FindViewById<TextView>(Resource.Id.SiteTel);
+
+                TextView ContactPersonV = FindViewById<TextView>(Resource.Id.ContactPerson);
+
+                TextView PersonTelV = FindViewById<TextView>(Resource.Id.PersonTel);
+
+                TextView LatV = FindViewById<TextView>(Resource.Id.Latitude);
+
+                TextView LongV = FindViewById<TextView>(Resource.Id.Longitude);
+                TextView Add1V = FindViewById<TextView>(Resource.Id.Address1);
+                TextView Add2V = FindViewById<TextView>(Resource.Id.Address2);
+                TextView Add3V = FindViewById<TextView>(Resource.Id.Address3);
+                
                 ASiteBack = FindViewById<Button>(Resource.Id.allsitesBack);
 
                 ASiteBack.Click += async (sender, e) =>
@@ -252,12 +272,29 @@ namespace MobileRolloutManager
 
                 
                 ActionBar.Title = "Site Details";
-                List<Sites> listitems = await FetchSiteById(Constants.UserIdd);
+                List<Sites> listitems = await FetchSiteById(ids);
 
                 if (listitems.Count >0) {
 
+                    ProjectV.Text = listitems[0].Project;
+                    ClientV.Text = listitems[0].Client;
+                    SiteV.Text = listitems[0].Site;
 
+                    SiteStatusV.Text = listitems[0].SiteStatus;
 
+                    SiteIdV.Text = listitems[0].SiteId;
+
+                    SiteTelV.Text = listitems[0].SiteTel;
+                    ContactPersonV.Text = listitems[0].ContactPerson;
+
+                    PersonTelV.Text = listitems[0].PersonTel;
+
+                    LatV.Text = listitems[0].Latitude;
+
+                    LongV.Text = listitems[0].Longitude;
+                    Add1V.Text = listitems[0].Address1;
+                    Add2V.Text = listitems[0].Address2;
+                    Add3V.Text = listitems[0].Address3;
                 }
 
                 progressDialog.Dismiss();
@@ -431,6 +468,8 @@ namespace MobileRolloutManager
 
                     var response = client.Execute(request);
 
+                    Log.Info("FetchSiteById", @"Output {0}", response.Content);
+
                     List<Sites> jj = JsonConvert.DeserializeObject<List<Sites>>(response.Content);
 
 
@@ -444,7 +483,7 @@ namespace MobileRolloutManager
             {
 
 
-                Log.Info("FetchAllSitesAsync", @"				Exception {0}", ex.Message);
+                Log.Info("FetchSiteById", @"				Exception {0}", ex.Message);
 
                 Console.WriteLine(@"				ERROR {0}", ex.Message);
                 return null;
