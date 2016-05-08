@@ -67,10 +67,7 @@ namespace MobileRolloutManager
 
                     Intent intent = new Intent(this,typeof(LoadSites)); // need to set your Intent View here
 
-                    intent.AddFlags(ActivityFlags.NoHistory);
-                    intent.AddFlags(ActivityFlags.NewTask);
-
-                    StartActivity(intent);
+                     StartActivity(intent);
                    // this.FinishAndRemoveTask();
                  
                 }

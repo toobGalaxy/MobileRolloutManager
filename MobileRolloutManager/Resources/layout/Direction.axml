@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:text="Back"
+                android:layout_column="0"
+                android:id="@+id/allsitesBack3" />
+            <Button
+                android:text="Use Device GPS"
+                android:layout_column="1"
+                android:id="@+id/btngps" />
+        </TableRow>
+    </TableLayout>
+    <fragment
+        android:id="@+id/mapF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.MapFragment" />
+</LinearLayout>

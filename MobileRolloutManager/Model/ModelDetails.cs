@@ -23,8 +23,15 @@ namespace MobileRolloutManager
         public int markerColor { get; set; }
 
     }
+    public class ResultSet
+    {
 
-    public class SiteMarkersList
+        public string result { get; set; }
+    }
+
+
+
+        public class SiteMarkersList
     {
         public List<SiteMarkers> Sitemark { get; set; }
 
@@ -52,9 +59,22 @@ namespace MobileRolloutManager
     public class LoginDetails
     {
         public string UserId { get; set; }
-       
+        
 
     }
+
+    public class SchoolAssetRegisters
+    {
+       public int Id { get; set; }
+        public string Item { get; set; }
+        public string ItemDescription { get; set; }
+        public string SerialNumber { get; set; }
+        public int Quantity { get; set; }
+        public int SiteId { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime Created { get; set; }
+    }
+
 
     public class LoginList
     {

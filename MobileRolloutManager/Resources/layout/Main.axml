@@ -48,7 +48,8 @@
                 android:id="@+id/user"
                 android:layout_centerInParent="true"
                 android:layout_width="290.0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
         </TableRow>
         <TableRow
             android:id="@+id/tableRow2"

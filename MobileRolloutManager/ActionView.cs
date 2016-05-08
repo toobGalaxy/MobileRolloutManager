@@ -28,10 +28,8 @@ namespace MobileRolloutManager
         private List<SiteMarkers> itemMarkerss = new List<SiteMarkers>();
         private Button mapBack;
         private GoogleMap _map;
-        private MapFragment _mapFragment;
         private static readonly LatLng Passchendaele = new LatLng(50.897778, 3.013333);
         private static readonly LatLng VimyRidge = new LatLng(50.379444, 2.773611);
-        private SupportMapFragment mapFragment;
         private string UserId = Constants.UserIdd;
 
         public async void OnMapReady(GoogleMap _map2)
@@ -41,7 +39,8 @@ namespace MobileRolloutManager
             {
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
                 itemMarkerss = await FetchSitesAsync(UserId);
-               
+                _map.UiSettings.ZoomGesturesEnabled = true;
+                _map.UiSettings.SetAllGesturesEnabled(true);
                 foreach (var site in itemMarkerss)
                 {
                     MarkerOptions marker = new MarkerOptions();

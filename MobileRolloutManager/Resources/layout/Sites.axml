@@ -28,7 +28,7 @@
         </TableRow>
     </TableLayout>
     <TextView
-        android:text="ToDo - Sites Assigned"
+        android:text="Sites Assigned"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +38,10 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="217.0dp"
-        android:id="@+id/list" />
+        android:id="@+id/list"
+        android:smoothScrollbar="true" />
     <TextView
-        android:text="ToDo - Issue Sites Assigned"
+        android:text="Issue Sites Assigned"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:text="Back"
+                android:layout_column="0"
+                android:id="@+id/InstBack" />
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:text="Site Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SiteName" />
+    <Button
+        android:text="Add Asset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Assets" />
+    <Button
+        android:text="Add Installation Photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/photoProof" />
+    <Button
+        android:text="Add SignOff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SignOff" />
+    <Button
+        android:text="Add Sim Imae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddSim" />
+    <Button
+        android:text="Add Issue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/issue" />
+</LinearLayout>
