@@ -44,8 +44,16 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DreamFactory, Version=2.0.3.37549, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DreamFactoryNet.2.0.3.1\lib\portable-net45+netcore45+wpa81+wp8\DreamFactory.dll</HintPath>
+    <Reference Include="DreamFactory, Version=2.0.4.23399, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DreamFactoryNet.2.0.4\lib\portable-net45+netcore45+wpa81+wp8\DreamFactory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Media.Plugin, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugin.Media.1.0.1\lib\MonoAndroid10\Media.Plugin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Media.Plugin.Abstractions, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugin.Media.1.0.1\lib\MonoAndroid10\Media.Plugin.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -168,6 +176,12 @@
     <AndroidResource Include="Resources\layout\NewAsset.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\LayoutSPhotos.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NewImage.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -187,6 +201,10 @@
     <XamarinComponentReference Include="googleplayservices-maps">
       <Visible>False</Visible>
       <Version>29.0.0.1</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="MediaPlugin">
+      <Visible>False</Visible>
+      <Version>1.0.1</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="radialprogress">
       <Visible>False</Visible>

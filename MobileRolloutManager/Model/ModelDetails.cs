@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Media;
 
 namespace MobileRolloutManager
 {
@@ -75,6 +76,13 @@ namespace MobileRolloutManager
         public DateTime Created { get; set; }
     }
 
+    public class SiteImageSignOffs {
+        public int Id { get; set; }
+        public string DocumentName { get; set; }
+        public string Memo { get; set; }
+        public int SchoolId { get; set; }
+        public string CreatedBy { get; set; }
+    }
 
     public class LoginList
     {

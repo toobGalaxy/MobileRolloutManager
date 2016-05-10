@@ -26,28 +26,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/SiteName" />
     <Button
-        android:text="Add Asset"
+        android:text="Asset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Assets" />
     <Button
-        android:text="Add Installation Photo"
+        android:text="Installation Photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/photoProof" />
     <Button
-        android:text="Add SignOff"
+        android:text="SignOff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/SignOff" />
     <Button
-        android:text="Add Sim Imae"
+        android:text="Sim Imae"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/AddSim" />
     <Button
-        android:text="Add Issue"
+        android:text="Issue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/issue" />
+    <Button
+        android:text="Notes/Memos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Notes" />
 </LinearLayout>

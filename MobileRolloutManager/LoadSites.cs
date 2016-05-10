@@ -20,6 +20,16 @@ using System.Globalization;
 using Android.Locations;
 using System.Threading;
 using ZXing.Mobile;
+using Android.Graphics;
+using Android.Provider;
+using System.IO;
+using Media.Plugin;
+using Media.Plugin.Abstractions;
+using System.Text;
+using DreamFactory.Model.File;
+using DreamFactory.Api;
+using DreamFactory.Rest;
+using DreamFactory.Http;
 
 namespace MobileRolloutManager
 {
@@ -44,6 +54,7 @@ namespace MobileRolloutManager
         private LocationManager _locMan;
         private Location MyLocation;
         private Button btnDirections;
+
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -362,6 +373,16 @@ namespace MobileRolloutManager
             ActionBar.Title = "Start Installation Process";
             TextView SN = FindViewById<TextView>(Resource.Id.SiteName);
             SN.Text = SiteNames;
+          
+
+            Button Back = FindViewById<Button>(Resource.Id.InstBack);
+            Back.Click += async (sender, e) =>
+
+            {
+                await loadSite(ids);
+                // SetContentView(Resource.Layout.Sites);
+
+            };
             Button AddAsset = FindViewById<Button>(Resource.Id.Assets);
             AddAsset.Click += async (sender, e) =>
 
@@ -370,12 +391,11 @@ namespace MobileRolloutManager
                 // SetContentView(Resource.Layout.Sites);
 
             };
-
-            Button Back = FindViewById<Button>(Resource.Id.InstBack);
-            Back.Click += async (sender, e) =>
+            Button AddPhoto = FindViewById<Button>(Resource.Id.photoProof);
+            AddPhoto.Click += async (sender, e) =>
 
             {
-                await loadSite(ids);
+                await LoadPhotos(ids, SiteNames);
                 // SetContentView(Resource.Layout.Sites);
 
             };
@@ -425,6 +445,134 @@ namespace MobileRolloutManager
             };
 
         }
+        private async Task LoadPhotos(string ids, string SiteName)
+        {
+            var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
+            SetContentView(Resource.Layout.LayoutSPhotos);
+            ActionBar.Title = "Site Photos";
+
+            List<SiteImageSignOffs> listitems = await FetchSitePicksBySiteId(ids);
+            List<string> Displaylistitems = new List<string>();
+            ListView listV = FindViewById<ListView>(Resource.Id.ImagesList);
+            if (listitems.Count > 0)
+            {
+
+                foreach (var item in listitems)
+                {
+                    //  var imageBitmap = BitmapFactory.DecodeByteArray(item.StoredDocument, 0, item.StoredDocument.Length);
+                    Displaylistitems.Add(item.DocumentName);
+                }
+
+
+                ArrayAdapter adapter = new ArrayAdapter(
+                                    this, //Context, typically the Activity
+                                    Android.Resource.Layout.SimpleListItem1, //The layout. How the data will be presented 
+                                    Displaylistitems //The enumerable data
+                                );
+                listV.Adapter = adapter;
+
+            }
+
+
+            Button Back = FindViewById<Button>(Resource.Id.imgBack);
+            Back.Click += async (sender, e) =>
+
+            {
+                await LoadInstall(ids, SiteName);
+                // SetContentView(Resource.Layout.Sites);
+            };
+
+            Button Add = FindViewById<Button>(Resource.Id.Add);
+            AlertDialog dialog = null;
+            if (Constants.ShowOnceImg == 0)
+            {
+                var pop = new AlertDialog.Builder(this);
+                pop.SetMessage("If your photo takes to long to upload or you want to reduce the size, go to your device camera settings and reduce the picture quality");
+                pop.SetTitle("Message");
+                pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                dialog = pop.Create();
+                dialog.Show();
+                Constants.ShowOnceImg = 1;
+            }
+            Add.Click += async delegate
+            {
+                
+
+               
+
+                Bitmap i;
+                var imgName = "";
+                string dd = DateTime.Now.Millisecond.ToString();
+                var media = new MediaImplementation();
+                var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                   
+                    Directory = "Sample",
+                    Name = SiteName+"SO"+ dd + ".jpg",
+                    DefaultCamera = CameraDevice.Front
+                });
+                if (file == null)
+                { return;  dialog = null;
+                   
+                    var pop = new AlertDialog.Builder(this);
+                    pop.SetMessage("Something went wrong, try again");
+                    pop.SetTitle("Message");
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                    dialog.Show();
+                    await LoadPhotos(ids,SiteName);
+
+                }
+                else
+                {
+                    var path = file.Path;
+                    
+                    imgName = SiteName + "SO" + dd + ".jpg";
+                    SiteImageSignOffs nn = new SiteImageSignOffs();
+
+                    nn.DocumentName = imgName;
+                    nn.SchoolId = int.Parse(ids);
+
+                    FileInfo fileInfo = new FileInfo(path);
+                    long imageFileLength = fileInfo.Length;
+                    FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] imageData = br.ReadBytes((int)imageFileLength);
+                   
+                   
+                    string reply = await LoadSaveImage2(file.Path, imageData, fileInfo.Name,ids);
+                    file.Dispose();
+                    if (reply == "1")
+                    {
+                         dialog = null;
+
+                        var pop = new AlertDialog.Builder(this);
+                        pop.SetMessage("Save Successfull");
+                        pop.SetTitle("Message");
+                        pop.SetNeutralButton("OK", delegate { OnDismissSuccessPicAlert(dialog,ids,SiteName); });
+                        dialog = pop.Create();
+                        dialog.Show();
+                    }
+                    else
+                    {
+                         dialog = null;
+
+                        var pop = new AlertDialog.Builder(this);
+                        pop.SetMessage("Something went wrong, try again");
+                        pop.SetTitle("Message");
+                        pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                        dialog = pop.Create();
+                        dialog.Show();
+                        await LoadPhotos(ids, SiteName);
+                    }
+
+                }
+            };
+            progressDialog.Cancel();
+        }
 
         private async Task LoadAssetsAdd(string ids, string SiteName) {
             SetContentView(Resource.Layout.NewAsset);
@@ -460,12 +608,15 @@ namespace MobileRolloutManager
 
                 if (result != null)
                 {
+                    AlertDialog dialog = null;
                     Serial.Text = result.Text;
                     var pop = new AlertDialog.Builder(this);
                     pop.SetMessage("Serial Scan will return an approximate match, edit the values if the item is not the same. If the model only returns the serial it means you will need to add the rest of the details manually in the add asset screen. ");
                     pop.SetTitle("Scanner Message");
-                    AlertDialog dialog = pop.Create();
-
+                    pop.SetNeutralButton("OK",delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                   
+                    dialog.Show();
                    List<SchoolAssetRegisters> returs = await FetchAssetsByAssetMatch(result.Text);
                     if (returs.Count > 0) {
                         itemname.Text = returs[0].Item;
@@ -479,41 +630,66 @@ namespace MobileRolloutManager
             save.Click += async (sender, e) =>
 
             {
+                
                 SchoolAssetRegisters ss = new SchoolAssetRegisters();
                 ss.Item = itemname.Text;
                 ss.ItemDescription = ItemDescription.Text;
                 ss.SerialNumber = Serial.Text;
                 ss.SiteId = Constants.CurrentSiteId;
                 ss.Quantity = int.Parse(Quantity.Text);
-
+                ss.CreatedBy = Constants.Username; 
                 string result = await LoadSaveAsset(ss);
 
                 if (result == "1")
                 {
                     var pop = new AlertDialog.Builder(this);
+                    AlertDialog dialog = null;
                     pop.SetMessage("Save was a Success!");
                     pop.SetTitle("Save Message");
-                    AlertDialog dialog = pop.Create();
+                    
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                    dialog.Show();
                     await LoadAssetsAdd(ids, SiteName);
                 }
                 else {
+                    
                     var pop = new AlertDialog.Builder(this);
+                    AlertDialog dialog = null;
                     pop.SetMessage("Save was a unsuccessfull! Try again or check your values.");
                     pop.SetTitle("Save Message");
-                    AlertDialog dialog = pop.Create();
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                    dialog.Show();
                 }
                 // SetContentView(Resource.Layout.Sites);
             };
+        }
+
+        private void OnDismissAlert(AlertDialog a)
+        {
+            a.Dismiss();
+        }
+
+        private async void OnDismissSuccessPicAlert(AlertDialog a, string ids, string SiteName)
+        {
+            a.Dismiss();
+            await LoadPhotos(ids, SiteName);
         }
 
         private async Task<string> LoadSaveAsset(SchoolAssetRegisters nn)
         { string retu = "0";
             try
             {
+                var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+                progressDialog.Indeterminate = true;
+                progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
                 await Task.Run(() =>
 
                 {
-                    var client = new RestClient(Constants.sp_getAssetListItems);
+                   
+                    var client = new RestClient(Constants.sp_SaveAssets);
                     string userName = "app@itgalaxy.co.za";
                     string passWord = "Internet1@#";
                     var request = new RestRequest(Method.POST);
@@ -523,11 +699,12 @@ namespace MobileRolloutManager
                     request.RequestFormat = DataFormat.Json;
                     request.AddHeader("Accept", "application/json");
 
-                    string ParText = "{      \"name\": \"Item\",      \"param_type\": \"IN\",      \"value\": \"" + nn.Item + "\",      \"type\": \"string\"    }";
-                    ParText += "{      \"name\": \"ItemDescription\",      \"param_type\": \"IN\",      \"value\": \"" + nn.ItemDescription + "\",      \"type\": \"string\"    }";
-                    ParText += "{      \"name\": \"SerialCode\",      \"param_type\": \"IN\",      \"value\": \"" + nn.SerialNumber + "\",      \"type\": \"string\"    }";
-                    ParText += "{      \"name\": \"Quantity\",      \"param_type\": \"IN\",      \"value\": \"" + nn.Quantity + "\",      \"type\": \"string\"    }";
-
+                    string ParText = "{      \"name\": \"Item\",      \"param_type\": \"IN\",      \"value\": \"" + nn.Item + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"ItemDescription\",      \"param_type\": \"IN\",      \"value\": \"" + nn.ItemDescription + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"Serial\",      \"param_type\": \"IN\",      \"value\": \"" + nn.SerialNumber + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"Quantity\",      \"param_type\": \"IN\",      \"value\": \"" + nn.Quantity + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + nn.SiteId + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"CreatedBy\",      \"param_type\": \"IN\",      \"value\": \"" + nn.CreatedBy + "\",      \"type\": \"string\"    }";
 
                     request.AddParameter("application/json", "{ \"params\": ["+ParText+"]}", ParameterType.RequestBody);
 
@@ -540,18 +717,180 @@ namespace MobileRolloutManager
                     if (jj.Count > 0) {
                         retu = jj[0].result;
                     }
+                    progressDialog.Dismiss();
                     return retu;
                 });
+                progressDialog.Dismiss();
+                return retu;
+            }
+            catch (Exception ex) { 
+ 
+                Log.Info("FetchAssetsBySiteId", @"				ERROR {0}", ex.Message);
+             
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
 
+            }
+
+        }
+        //private async Task<string> LoadSaveImage(SiteImageSignOffs nn,byte[] imageContent, string path)
+        //{
+
+           
+
+        //    var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+        //    string retu = "0";
+        //    try
+        //    {
+
+        //        progressDialog.Indeterminate = true;
+        //        progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
+
+        //        await Task.Run(async () =>
+
+        //        {
+
+        //            IRestContext context = new RestContext("http://197.189.239.202:8081/api/v2","files", "b5cb82af7b5d4130f36149f90aa2746782e59a872ac70454ac188743cb55b0ba");
+        //            context.BaseHeaders.Include("Authorization: Basic ", "YXBwQGl0Z2FsYXh5LmNvLnphOkludGVybmV0MUAj");
+        //            IUserApi userApi = context.Factory.CreateUserApi();
+        //            // DreamFactory.Model.User.Session session = await userApi.LoginAsync("tobie@smartlabs.co.za", "Internet123");
+
+        //            IFilesApi filesApi = context.Factory.CreateFilesApi("files");
+
+        //            var t =  await filesApi.CreateFileAsync("Rolloutmanager/"+nn.DocumentName, path, true);
+                   
+        //          //  Log.Info("Re", @"				LoadSaveAsset {0}", t.Path.ToString());
+        //            // var client = new RestClient(Constants.sp_SaveSiteImagesTEST+"&url="+path);
+        //            // string userName = "app@itgalaxy.co.za";
+        //            // string passWord = "Internet1@#";
+
+        //            // var request = new RestRequest(Method.POST);
+
+        //            //// request.AddFile("url", path, "image/jpg");
+        //            // request.RequestFormat = DataFormat.Json;
+        //            // //request.AddHeader("Accept", "application/json");
+        //            // client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+        //            // // request.AddFileBytes("StoredDocument", nn.StoredDocument, nn.DocumentName, "application/json");
+        //            //// string ParText = "{  \"resource\": [{ \"name\": \""+"test.jpg"+"\",\"path\": \"RolloutManager/test.jpg\",\"content_type\": \"image/jpg\"}]}";
+        //            //// request.AddParameter("application/json", ParText, ParameterType.RequestBody);
+
+
+        //            // var response = client.Execute(request);
+        //            // Log.Info("Re", @"				LoadSaveAsset {0}", response.Content.ToString());
+
+        //            // List<ResultSet> jj = JsonConvert.DeserializeObject<List<ResultSet>>(response.Content);
+
+        //            // if (jj.Count > 0)
+        //            // {
+        //            //     retu = jj[0].result;
+        //            // }
+        //            // progressDialog.Dismiss();
+        //            return retu;
+        //        });
+        //        progressDialog.Dismiss();
+        //        return retu;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        progressDialog.Dismiss();
+        //        Log.Info("LoadSaveImage", @"				ERROR {0}", ex.Message);
+
+        //        Console.WriteLine(@"			LoadSaveImage	ERROR {0}", ex.Message);
+        //        return null;
+
+        //    }
+
+        //}
+        private async Task<string> LoadSaveImage2(String path,byte[] imageData, string fileName,string siteId)
+        {
+            var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+            string retu = "0";
+            try
+            {
+               
+                progressDialog.Indeterminate = true;
+                progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
+                await Task.Run(() =>
+
+                {
+
+                    var client = new RestClient(Constants.sp_SaveSiteImagesTEST + fileName +"?api_key=b5cb82af7b5d4130f36149f90aa2746782e59a872ac70454ac188743cb55b0ba");
+                    string userName = "app@itgalaxy.co.za";
+                    string passWord = "Internet1@#";
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("Content-Type", "image/jpg");
+                    client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                    //request.RequestFormat = DataFormat.Json;
+                    //  request.AddHeader("Accept", "application/json");
+                    //var imagStore = Convert.ToBase64String(nn.StoredDocument);
+
+                    //StringBuilder sb = new StringBuilder();
+
+                    //for (int i = 0; i < nn.StoredDocument.Length; i++)
+                    //{
+                    //    sb.Append(nn.StoredDocument[i].ToString("X2"));
+                    //}
+
+                    //string news = sb.ToString();
+
+                   
+                   // request.AddFile("body",path,"image/jpg");
+                   
+                    //request.AddParameter("body","content",)
+                   // request.AddJsonBody(fl);
+                    //string ParText = "{      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + nn.SchoolId + "\",      \"type\": \"int\"    },";
+                    //ParText += "{      \"name\": \"DocumentName\",      \"param_type\": \"IN\",      \"value\": \"" + nn.DocumentName + "\",      \"type\": \"string\"    },";
+                    //ParText += "{      \"name\": \"StoredDocument\",      \"param_type\": \"IN\",      \"value\": \"" + news + "\",      \"type\": \"binary\"    },";
+                    //ParText += "{      \"name\": \"CreatedBy\",      \"param_type\": \"IN\",      \"value\": \"" + Constants.Username + "\",      \"type\": \"string\"    }";
+                    request.AddParameter("body", imageData, ParameterType.RequestBody);
+                    //request.RequestFormat = DataFormat.Json;
+                   // request.AddBody(fl)
+                    var response = client.Execute(request);
+
+                    if (response.StatusDescription == "Created")
+
+                    {
+                        client = new RestClient(Constants.sp_SaveSiteImages);
+                        request = new RestRequest(Method.POST);
+                        request.AddHeader("Content-Type", "application/zip");
+                        client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                        request.RequestFormat = DataFormat.Json;
+                        request.AddHeader("Accept", "application/json");
+                        request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + siteId + "\",      \"type\": \"int\"    },{      \"name\": \"DocumentName\",      \"param_type\": \"IN\",      \"value\": \"" + fileName + "\",      \"type\": \"string\"    },{      \"name\": \"CreatedBy\",      \"param_type\": \"IN\",      \"value\": \"" + Constants.Username + "\",      \"type\": \"string\"    }]}", ParameterType.RequestBody);
+
+                        response = client.Execute(request);
+                        List<ResultSet> jj = JsonConvert.DeserializeObject<List<ResultSet>>(response.Content);
+                        if (jj.Count > 0)
+                          {
+                          retu = jj[0].result;
+                          }
+                 
+                    }
+                   // Log.Info("Re", @"				LoadSaveAsset {0}", response.Content.ToString());
+
+                  //  List<ResultSet> jj = JsonConvert.DeserializeObject<List<ResultSet>>(response.Content);
+
+                   // if (jj.Count > 0)
+                  //  {
+                      //  retu = jj[0].result;
+                  //  }
+                    progressDialog.Dismiss();
+                    return retu;
+                });
+                progressDialog.Dismiss();
                 return retu;
             }
             catch (Exception ex)
             {
+                progressDialog.Dismiss();
+                Log.Info("LoadSaveImage", @"				ERROR {0}", ex.Message);
 
-
-                Log.Info("FetchAssetsBySiteId", @"				ERROR {0}", ex.Message);
-
-                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                Console.WriteLine(@"			LoadSaveImage	ERROR {0}", ex.Message);
                 return null;
 
             }
@@ -575,7 +914,7 @@ namespace MobileRolloutManager
 
                     request.RequestFormat = DataFormat.Json;
                     request.AddHeader("Accept", "application/json");
-                    request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + ids + "\",      \"type\": \"string\"    }]}", ParameterType.RequestBody);
+                    request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"Id\",      \"param_type\": \"IN\",      \"value\": \"" + ids + "\",      \"type\": \"string\"    }]}", ParameterType.RequestBody);
 
                     var response = client.Execute(request);
 
@@ -600,7 +939,6 @@ namespace MobileRolloutManager
 
             }
         }
-
 
         private async Task<List<SchoolAssetRegisters>> FetchAssetsBySiteId(string ids) {
             List<SchoolAssetRegisters> items = new List<SchoolAssetRegisters>();
@@ -637,6 +975,49 @@ namespace MobileRolloutManager
 
 
                 Log.Info("FetchAssetsBySiteId", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
+
+            }
+        }
+
+        private async Task<List<SiteImageSignOffs>> FetchSitePicksBySiteId(string ids)
+        {
+            List<SiteImageSignOffs> items = new List<SiteImageSignOffs>();
+            try
+            {
+                await Task.Run(() =>
+
+                {
+                    var client = new RestClient(Constants.sp_GetSiteImages);
+                    string userName = "app@itgalaxy.co.za";
+                    string passWord = "Internet1@#";
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("Content-Type", "application/zip");
+                    client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                    request.RequestFormat = DataFormat.Json;
+                    request.AddHeader("Accept", "application/json");
+                    request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + ids + "\",      \"type\": \"int\"    }]}", ParameterType.RequestBody);
+
+                    var response = client.Execute(request);
+
+                    Log.Info("Re", @"				FetchSitePicksBySiteId {0}", response.Content.ToString());
+
+                    List<SiteImageSignOffs> jj = JsonConvert.DeserializeObject<List<SiteImageSignOffs>>(response.Content);
+
+                    items = jj;
+
+                });
+                return items;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                Log.Info("FetchSitePicksBySiteId", @"				ERROR {0}", ex.Message);
 
                 Console.WriteLine(@"				ERROR {0}", ex.Message);
                 return null;
@@ -964,13 +1345,6 @@ namespace MobileRolloutManager
 
             }
         }
-
-        
-      
-
-
-
-
 
     }
 

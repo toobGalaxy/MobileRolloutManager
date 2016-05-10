@@ -385,17 +385,17 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070020
 			public const int AddSim = 2131165216;
 			
-			// aapt resource value: 0x7f070052
-			public const int Address1 = 2131165266;
-			
 			// aapt resource value: 0x7f070055
-			public const int Address2 = 2131165269;
+			public const int Address1 = 2131165269;
 			
 			// aapt resource value: 0x7f070058
-			public const int Address3 = 2131165272;
+			public const int Address2 = 2131165272;
 			
-			// aapt resource value: 0x7f070057
-			public const int AddressText = 2131165271;
+			// aapt resource value: 0x7f07005b
+			public const int Address3 = 2131165275;
+			
+			// aapt resource value: 0x7f07005a
+			public const int AddressText = 2131165274;
 			
 			// aapt resource value: 0x7f070015
 			public const int AssetBack = 2131165205;
@@ -403,77 +403,83 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07001d
 			public const int Assets = 2131165213;
 			
-			// aapt resource value: 0x7f07002c
-			public const int BarCodeBtn = 2131165228;
+			// aapt resource value: 0x7f07002f
+			public const int BarCodeBtn = 2131165231;
 			
-			// aapt resource value: 0x7f07003b
-			public const int Client = 2131165243;
+			// aapt resource value: 0x7f07003e
+			public const int Client = 2131165246;
 			
-			// aapt resource value: 0x7f070046
-			public const int ContactPerson = 2131165254;
+			// aapt resource value: 0x7f070049
+			public const int ContactPerson = 2131165257;
 			
-			// aapt resource value: 0x7f070037
-			public const int DirectionsToSite = 2131165239;
+			// aapt resource value: 0x7f07003a
+			public const int DirectionsToSite = 2131165242;
 			
-			// aapt resource value: 0x7f070039
-			public const int EditDetails = 2131165241;
+			// aapt resource value: 0x7f07003c
+			public const int EditDetails = 2131165244;
+			
+			// aapt resource value: 0x7f070024
+			public const int ImagesList = 2131165220;
 			
 			// aapt resource value: 0x7f07001b
 			public const int InstBack = 2131165211;
 			
-			// aapt resource value: 0x7f07002e
-			public const int ItemDescription = 2131165230;
+			// aapt resource value: 0x7f070031
+			public const int ItemDescription = 2131165233;
 			
-			// aapt resource value: 0x7f07002d
-			public const int ItemNameT = 2131165229;
-			
-			// aapt resource value: 0x7f07004c
-			public const int Latitude = 2131165260;
+			// aapt resource value: 0x7f070030
+			public const int ItemNameT = 2131165232;
 			
 			// aapt resource value: 0x7f07004f
-			public const int Longitude = 2131165263;
+			public const int Latitude = 2131165263;
 			
-			// aapt resource value: 0x7f070029
-			public const int MyButton = 2131165225;
+			// aapt resource value: 0x7f070052
+			public const int Longitude = 2131165266;
 			
-			// aapt resource value: 0x7f070049
-			public const int PersonTel = 2131165257;
+			// aapt resource value: 0x7f07002c
+			public const int MyButton = 2131165228;
 			
-			// aapt resource value: 0x7f07003a
-			public const int Project = 2131165242;
+			// aapt resource value: 0x7f070022
+			public const int Notes = 2131165218;
+			
+			// aapt resource value: 0x7f07004c
+			public const int PersonTel = 2131165260;
+			
+			// aapt resource value: 0x7f07003d
+			public const int Project = 2131165245;
+			
+			// aapt resource value: 0x7f070037
+			public const int Quantity = 2131165239;
+			
+			// aapt resource value: 0x7f070039
+			public const int Save = 2131165241;
 			
 			// aapt resource value: 0x7f070034
-			public const int Quantity = 2131165236;
-			
-			// aapt resource value: 0x7f070036
-			public const int Save = 2131165238;
-			
-			// aapt resource value: 0x7f070031
-			public const int Serial = 2131165233;
+			public const int Serial = 2131165236;
 			
 			// aapt resource value: 0x7f07001f
 			public const int SignOff = 2131165215;
 			
-			// aapt resource value: 0x7f07003c
-			public const int Site = 2131165244;
+			// aapt resource value: 0x7f07003f
+			public const int Site = 2131165247;
 			
-			// aapt resource value: 0x7f070040
-			public const int SiteId = 2131165248;
+			// aapt resource value: 0x7f070043
+			public const int SiteId = 2131165251;
 			
 			// aapt resource value: 0x7f07001c
 			public const int SiteName = 2131165212;
 			
-			// aapt resource value: 0x7f07003f
-			public const int SiteStatus = 2131165247;
+			// aapt resource value: 0x7f070042
+			public const int SiteStatus = 2131165250;
 			
-			// aapt resource value: 0x7f070043
-			public const int SiteTel = 2131165251;
+			// aapt resource value: 0x7f070046
+			public const int SiteTel = 2131165254;
 			
-			// aapt resource value: 0x7f070038
-			public const int StartInstall = 2131165240;
+			// aapt resource value: 0x7f07003b
+			public const int StartInstall = 2131165243;
 			
-			// aapt resource value: 0x7f070024
-			public const int Text = 2131165220;
+			// aapt resource value: 0x7f070027
+			public const int Text = 2131165223;
 			
 			// aapt resource value: 0x7f070005
 			public const int adjust_height = 2131165189;
@@ -490,20 +496,20 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
-			// aapt resource value: 0x7f07005e
-			public const int btn_allSites = 2131165278;
+			// aapt resource value: 0x7f070061
+			public const int btn_allSites = 2131165281;
 			
 			// aapt resource value: 0x7f070019
 			public const int btngps = 2131165209;
 			
-			// aapt resource value: 0x7f070063
-			public const int contentFrame = 2131165283;
+			// aapt resource value: 0x7f070066
+			public const int contentFrame = 2131165286;
 			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
-			// aapt resource value: 0x7f07005b
-			public const int dial = 2131165275;
+			// aapt resource value: 0x7f07005e
+			public const int dial = 2131165278;
 			
 			// aapt resource value: 0x7f070000
 			public const int hybrid = 2131165184;
@@ -511,8 +517,11 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070007
 			public const int icon_only = 2131165191;
 			
+			// aapt resource value: 0x7f070026
+			public const int imageView1 = 2131165222;
+			
 			// aapt resource value: 0x7f070023
-			public const int imageView1 = 2131165219;
+			public const int imgBack = 2131165219;
 			
 			// aapt resource value: 0x7f070021
 			public const int issue = 2131165217;
@@ -520,14 +529,14 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07000c
 			public const int light = 2131165196;
 			
-			// aapt resource value: 0x7f07002a
-			public const int linearLayout1 = 2131165226;
+			// aapt resource value: 0x7f07002d
+			public const int linearLayout1 = 2131165229;
 			
-			// aapt resource value: 0x7f070060
-			public const int list = 2131165280;
+			// aapt resource value: 0x7f070063
+			public const int list = 2131165283;
 			
-			// aapt resource value: 0x7f070062
-			public const int list2 = 2131165282;
+			// aapt resource value: 0x7f070065
+			public const int list2 = 2131165285;
 			
 			// aapt resource value: 0x7f070014
 			public const int list3 = 2131165204;
@@ -535,14 +544,14 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070017
 			public const int listAssets = 2131165207;
 			
-			// aapt resource value: 0x7f07005f
-			public const int map = 2131165279;
+			// aapt resource value: 0x7f070062
+			public const int map = 2131165282;
 			
 			// aapt resource value: 0x7f07001a
 			public const int mapF = 2131165210;
 			
-			// aapt resource value: 0x7f07002b
-			public const int mapback = 2131165227;
+			// aapt resource value: 0x7f07002e
+			public const int mapback = 2131165230;
 			
 			// aapt resource value: 0x7f070001
 			public const int none = 2131165185;
@@ -550,20 +559,20 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070002
 			public const int normal = 2131165186;
 			
-			// aapt resource value: 0x7f07005d
-			public const int notes = 2131165277;
+			// aapt resource value: 0x7f070060
+			public const int notes = 2131165280;
 			
-			// aapt resource value: 0x7f070028
-			public const int password = 2131165224;
+			// aapt resource value: 0x7f07002b
+			public const int password = 2131165227;
 			
-			// aapt resource value: 0x7f07005c
-			public const int person = 2131165276;
+			// aapt resource value: 0x7f07005f
+			public const int person = 2131165279;
 			
 			// aapt resource value: 0x7f07001e
 			public const int photoProof = 2131165214;
 			
-			// aapt resource value: 0x7f070022
-			public const int relativeLayout1 = 2131165218;
+			// aapt resource value: 0x7f070025
+			public const int relativeLayout1 = 2131165221;
 			
 			// aapt resource value: 0x7f070003
 			public const int satellite = 2131165187;
@@ -577,56 +586,56 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f07000d
 			public const int tableLayout1 = 2131165197;
 			
-			// aapt resource value: 0x7f070059
-			public const int tableLayout2 = 2131165273;
+			// aapt resource value: 0x7f07005c
+			public const int tableLayout2 = 2131165276;
 			
 			// aapt resource value: 0x7f07000e
 			public const int tableRow1 = 2131165198;
 			
-			// aapt resource value: 0x7f070053
-			public const int tableRow10 = 2131165267;
-			
 			// aapt resource value: 0x7f070056
-			public const int tableRow11 = 2131165270;
+			public const int tableRow10 = 2131165270;
 			
-			// aapt resource value: 0x7f070041
-			public const int tableRow13 = 2131165249;
+			// aapt resource value: 0x7f070059
+			public const int tableRow11 = 2131165273;
 			
 			// aapt resource value: 0x7f070044
-			public const int tableRow14 = 2131165252;
+			public const int tableRow13 = 2131165252;
 			
 			// aapt resource value: 0x7f070047
-			public const int tableRow15 = 2131165255;
+			public const int tableRow14 = 2131165255;
+			
+			// aapt resource value: 0x7f07004a
+			public const int tableRow15 = 2131165258;
 			
 			// aapt resource value: 0x7f07000f
 			public const int tableRow2 = 2131165199;
 			
-			// aapt resource value: 0x7f07003d
-			public const int tableRow26 = 2131165245;
+			// aapt resource value: 0x7f070040
+			public const int tableRow26 = 2131165248;
 			
-			// aapt resource value: 0x7f07005a
-			public const int tableRow28 = 2131165274;
+			// aapt resource value: 0x7f07005d
+			public const int tableRow28 = 2131165277;
 			
 			// aapt resource value: 0x7f070012
 			public const int tableRow3 = 2131165202;
 			
-			// aapt resource value: 0x7f07002f
-			public const int tableRow4 = 2131165231;
-			
 			// aapt resource value: 0x7f070032
-			public const int tableRow5 = 2131165234;
+			public const int tableRow4 = 2131165234;
 			
 			// aapt resource value: 0x7f070035
-			public const int tableRow6 = 2131165237;
+			public const int tableRow5 = 2131165237;
 			
-			// aapt resource value: 0x7f07004a
-			public const int tableRow7 = 2131165258;
+			// aapt resource value: 0x7f070038
+			public const int tableRow6 = 2131165240;
 			
 			// aapt resource value: 0x7f07004d
-			public const int tableRow8 = 2131165261;
+			public const int tableRow7 = 2131165261;
 			
 			// aapt resource value: 0x7f070050
-			public const int tableRow9 = 2131165264;
+			public const int tableRow8 = 2131165264;
+			
+			// aapt resource value: 0x7f070053
+			public const int tableRow9 = 2131165267;
 			
 			// aapt resource value: 0x7f070004
 			public const int terrain = 2131165188;
@@ -634,47 +643,47 @@ namespace MobileRolloutManager
 			// aapt resource value: 0x7f070013
 			public const int textView1 = 2131165203;
 			
-			// aapt resource value: 0x7f070025
-			public const int textView10 = 2131165221;
+			// aapt resource value: 0x7f070028
+			public const int textView10 = 2131165224;
 			
-			// aapt resource value: 0x7f070027
-			public const int textView11 = 2131165223;
-			
-			// aapt resource value: 0x7f070030
-			public const int textView12 = 2131165232;
+			// aapt resource value: 0x7f07002a
+			public const int textView11 = 2131165226;
 			
 			// aapt resource value: 0x7f070033
-			public const int textView13 = 2131165235;
+			public const int textView12 = 2131165235;
 			
-			// aapt resource value: 0x7f070042
-			public const int textView14 = 2131165250;
+			// aapt resource value: 0x7f070036
+			public const int textView13 = 2131165238;
 			
 			// aapt resource value: 0x7f070045
-			public const int textView15 = 2131165253;
+			public const int textView14 = 2131165253;
 			
 			// aapt resource value: 0x7f070048
-			public const int textView16 = 2131165256;
+			public const int textView15 = 2131165256;
 			
 			// aapt resource value: 0x7f07004b
-			public const int textView17 = 2131165259;
+			public const int textView16 = 2131165259;
 			
 			// aapt resource value: 0x7f07004e
-			public const int textView18 = 2131165262;
+			public const int textView17 = 2131165262;
 			
 			// aapt resource value: 0x7f070051
-			public const int textView19 = 2131165265;
-			
-			// aapt resource value: 0x7f070061
-			public const int textView2 = 2131165281;
+			public const int textView18 = 2131165265;
 			
 			// aapt resource value: 0x7f070054
-			public const int textView20 = 2131165268;
+			public const int textView19 = 2131165268;
 			
-			// aapt resource value: 0x7f07003e
-			public const int textView26 = 2131165246;
+			// aapt resource value: 0x7f070064
+			public const int textView2 = 2131165284;
 			
-			// aapt resource value: 0x7f070026
-			public const int user = 2131165222;
+			// aapt resource value: 0x7f070057
+			public const int textView20 = 2131165271;
+			
+			// aapt resource value: 0x7f070041
+			public const int textView26 = 2131165249;
+			
+			// aapt resource value: 0x7f070029
+			public const int user = 2131165225;
 			
 			// aapt resource value: 0x7f070009
 			public const int wide = 2131165193;
@@ -724,31 +733,37 @@ namespace MobileRolloutManager
 			public const int Installation = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int Main = 2130903045;
+			public const int LayoutSPhotos = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int MappedAssignedSites = 2130903046;
+			public const int Main = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int NewAsset = 2130903047;
+			public const int MappedAssignedSites = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int SiteDetails = 2130903048;
+			public const int NewAsset = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int SiteNotes = 2130903049;
+			public const int NewImage = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int SiteRollout = 2130903050;
+			public const int SiteDetails = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int Sites = 2130903051;
+			public const int SiteNotes = 2130903051;
 			
 			// aapt resource value: 0x7f03000c
-			public const int zxingscanneractivitylayout = 2130903052;
+			public const int SiteRollout = 2130903052;
 			
 			// aapt resource value: 0x7f03000d
-			public const int zxingscannerfragmentlayout = 2130903053;
+			public const int Sites = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int zxingscanneractivitylayout = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int zxingscannerfragmentlayout = 2130903055;
 			
 			static Layout()
 			{

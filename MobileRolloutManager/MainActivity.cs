@@ -5,7 +5,6 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.Json;
 using System.Net;
-using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -20,12 +19,15 @@ using Android.Content;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
+using Android.Graphics;
+
 
 namespace MobileRolloutManager
 {
     [Activity(Label = "MobileRolloutManager", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+
         CancellationTokenSource tokenSource;
         protected override void OnCreate(Bundle bundle)
         {
@@ -57,9 +59,19 @@ namespace MobileRolloutManager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(userText.Text + " " + passwordText.Text);
-                    Log.Info("Debugginggg", @"				ERROR {0}", ex.Message);
                     progressDialog.Dismiss();
+                    AlertDialog dialog = null;
+
+                    var pop = new AlertDialog.Builder(this);
+                    pop.SetMessage("Login Unsuccessfull" + ex.Message);
+                    pop.SetTitle("Message");
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+
+                    dialog.Show();
+                    //Console.WriteLine(userText.Text + " " + passwordText.Text);
+                    Log.Info("Debugginggg", @"				ERROR {0}", ex.Message);
+                    
                 }
                 
                 if (replies == "1") {
@@ -80,6 +92,11 @@ namespace MobileRolloutManager
         private EditText userText;
         private EditText passwordText;
         private string replies;
+
+        private void OnDismissAlert(AlertDialog a)
+        {
+            a.Dismiss();
+        }
 
         private async Task OnLogin2(string usernamea, string password)
         {
@@ -111,11 +128,15 @@ namespace MobileRolloutManager
                 if (jsonDoc.Length < 10)
                {
                     replies = "0";
+                      
+
+                  
                }
                else
                {
                    replies = "1";
                     Constants.UserIdd = jj[0].UserId.ToString();
+                        Constants.Username = usernamea;
                 }
           
                 });
@@ -124,7 +145,6 @@ namespace MobileRolloutManager
             }
             catch(Exception ex)
             {
-
                
                 Log.Info("Debugginggg", @"				ERROR {0}", ex.Message);
            
