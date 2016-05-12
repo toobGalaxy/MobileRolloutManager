@@ -41,7 +41,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/SignOff" />
     <Button
-        android:text="Sim Imae"
+        android:text="Training Attendence Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Training" />
+    <Button
+        android:text="Connectivity Information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/AddSim" />

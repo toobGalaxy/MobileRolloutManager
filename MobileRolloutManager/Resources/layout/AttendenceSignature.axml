@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/rootView">
+    <SignaturePad.SignaturePadView
+        android:id="@+id/signatureView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="127.0dp" />
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp" />
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnSave"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent">
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+        </TableRow>
+    </TableLayout>
+    <EditText
+        android:id="@+id/sigName"
+        android:singleLine="true"
+        android:layout_width="101.5dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnSave" />
+    <EditText
+        android:id="@+id/sigInst"
+        android:singleLine="true"
+        android:layout_width="98.5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sigName"
+        android:layout_toRightOf="@id/sigName"
+        android:layout_marginLeft="20.5dp" />
+    <EditText
+        android:id="@+id/sigDesign"
+        android:singleLine="true"
+        android:layout_width="116.0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/sigInst"
+        android:layout_toRightOf="@id/sigInst"
+        android:layout_marginLeft="20.5dp" />
+    <TextView
+        android:text="FULL NAME"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView10"
+        android:layout_width="85.0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignLeft="@id/signatureView"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@id/sigName" />
+    <TextView
+        android:text="NUMBER"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/textView10"
+        android:layout_toRightOf="@id/textView10"
+        android:layout_above="@id/sigInst"
+        android:layout_marginLeft="40.5dp" />
+    <TextView
+        android:text="DESIGNATION"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/textView9"
+        android:layout_toRightOf="@id/textView9"
+        android:layout_above="@id/sigDesign"
+        android:layout_marginLeft="58.0dp" />
+</RelativeLayout>

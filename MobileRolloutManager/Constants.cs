@@ -33,12 +33,25 @@ namespace MobileRolloutManager
         public static string sp_InsertPhotoINstallation = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_InsertPhotoINstallation?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
         public static string sp_SaveSiteImages = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_SaveSiteImages?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
         public static string sp_SaveSiteImagesTEST = "http://197.189.239.202:8081/api/v2/files/";
+        public static string sp_SaveSiteSignature = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_SaveSiteSignature?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_SaveSiteSignOff = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_SaveSiteSignOff?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_LoadSignOffsTemplate = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_LoadSignOffsTemplate?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_GetAttendenceRegister = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_GetAttendenceRegister?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_SaveSiteAttendSignature = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_SaveSiteAttendSignature?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_GetConnectivityInfo = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_GetConnectivityInfo?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_InsertConnectivityInfo = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_InsertConnectivityInfo?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_InsertIssueInfo = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_InsertIssueInfo?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_GetIssueInfo = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_GetIssueInfo?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_InsertSiteNotes = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_InsertSiteNotes?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+        public static string sp_GetSiteNotes = "http://197.189.239.202:8081/api/v2/rolloutman/_proc/sp_GetSiteNotes?api_key=d72ee527465032b6e510ee14f0e0cedf27110f17d8824dd06be4cf4127363b88";
+
         // Credentials that are hard coded into the REST service
         public static string Username = "app@itgalaxy.co.za";
         public static string Password = "Internet1@#";
         public static string UserIdd = "";
         public static int CurrentSiteId = 0;
         public static int ShowOnceImg = 0;
+        public static int SignOffTemplate = 0;
        
     }
 }

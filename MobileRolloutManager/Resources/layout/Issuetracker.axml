@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:id="@+id/IssueBack"
+                android:gravity="top|left"
+                android:text="Back"
+                android:layout_column="0"
+                android:layout_width="65.0dp"
+                android:layout_height="39.0dp" />
+            <Button
+                android:id="@+id/AddIssue"
+                android:gravity="top|right"
+                android:background="@drawable/addButton"
+                android:layout_column="2"
+                android:layout_height="51.0dp"
+                android:layout_width="62.5dp"
+                android:layout_gravity="right" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+        </TableRow>
+    </TableLayout>
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listAssets" />
+</LinearLayout>

@@ -38,7 +38,7 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="217.0dp"
-        android:id="@+id/list"
+        android:id="@+id/listing"
         android:smoothScrollbar="true" />
     <TextView
         android:text="Issue Sites Assigned"
@@ -51,5 +51,5 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list2" />
+        android:id="@+id/listing22" />
 </LinearLayout>

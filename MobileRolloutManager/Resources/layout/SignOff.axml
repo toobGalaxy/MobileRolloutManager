@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:text="Back"
+                android:layout_column="0"
+                android:id="@+id/SignOffBack" />
+            <Button
+                android:text="Add Signature"
+                android:layout_column="1"
+                android:id="@+id/sigBtn"
+                android:background="@drawable/log"
+                android:layout_gravity="top"
+                android:layout_height="80.5dp"
+                android:layout_marginLeft="13.0dp" />
+            <Button
+                android:text="Submit"
+                android:layout_column="2"
+                android:id="@+id/Save"
+                android:layout_marginLeft="21.5dp" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="Signatures Added = 0"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_column="2"
+                android:id="@+id/addedSignatures"
+                android:layout_marginLeft="1.0dp"
+                android:layout_marginRight="13.5dp" />
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/SignOffHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SignOffText"
+        android:layout_marginBottom="6.5dp" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10.5dp"
+        android:id="@+id/scrollView1">
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tableLayout2">
+            <TableRow
+                android:id="@+id/tableRow21">
+                <EditText
+                    android:layout_column="1"
+                    android:id="@+id/notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_column="2"
+                    android:text="Notes"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView23" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow5">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item1Text"
+                    android:layout_width="259.5dp" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox1" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow6">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item2Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox2" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow7">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item3Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox3" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow10">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item4Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox4" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow9">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item5Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox5" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow8">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item6Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox6" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow13">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item7Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox7" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow12">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item8Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox8" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow14">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item9Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox9" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow15">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item10Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox10" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow16">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item11Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox11" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow17">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item12Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox12" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow18">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item13Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox13" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow19">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item14Text" />
+                <CheckBox
+                    android:layout_column="2"
+                    android:id="@+id/checkBox14" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow20">
+                <TextView
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_column="1"
+                    android:id="@+id/item15Text" />
+                <CheckBox
+                    android:id="@+id/checkBox15" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

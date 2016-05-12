@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:text="Cancel"
+                android:layout_column="1"
+                android:id="@+id/ConnBack" />
+            <Button
+                android:text="Save"
+                android:layout_column="2"
+                android:id="@+id/ConnsSave"
+                android:layout_width="103.5dp"
+                android:layout_marginLeft="90.5dp"
+                android:layout_marginRight="24.0dp" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="Sim Card Number"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView10" />
+            <EditText
+                android:layout_column="2"
+                android:id="@+id/SimCardNumbers"
+                android:layout_width="231.5dp"
+                android:singleLine="true" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+            <TextView
+                android:text="Router IMEA"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView11" />
+            <EditText
+                android:singleLine="true"
+                android:layout_column="2"
+                android:id="@+id/RouterIMEA" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4">
+            <TextView
+                android:text="RICA Officer Name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView12" />
+            <EditText
+                android:layout_column="2"
+                android:id="@+id/RiceOfficer"
+                android:singleLine="true" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow5">
+            <TextView
+                android:text="Other RICA Info"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_column="1"
+                android:id="@+id/textView13" />
+            <EditText
+                android:layout_column="2"
+                android:id="@+id/OtherRica" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow6">
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
