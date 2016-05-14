@@ -349,34 +349,37 @@ namespace MobileRolloutManager
 			public const int logo_galaxy_black_64 = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int map = 2130837556;
+			public const int logoLogin = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int menu = 2130837557;
+			public const int map = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int notes = 2130837558;
+			public const int menu = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int person = 2130837559;
+			public const int notes = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int RollIcon = 2130837560;
+			public const int person = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int RolloutManager = 2130837561;
+			public const int RollIcon = 2130837561;
 			
 			// aapt resource value: 0x7f02003a
-			public const int Search = 2130837562;
+			public const int RolloutManager = 2130837562;
 			
 			// aapt resource value: 0x7f02003b
-			public const int signoff = 2130837563;
+			public const int Search = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int SiteHistory = 2130837564;
+			public const int signoff = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int Splash = 2130837565;
+			public const int SiteHistory = 2130837565;
+			
+			// aapt resource value: 0x7f02003e
+			public const int Splash = 2130837566;
 			
 			static Drawable()
 			{
