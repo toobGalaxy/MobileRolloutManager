@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <Button
+                android:text="Cancel"
+                android:layout_column="1"
+                android:id="@+id/ChangeDetailsSaveBack" />
+            <Button
+                android:text="Save"
+                android:layout_column="2"
+                android:id="@+id/ChangeDetailsSave"
+                android:layout_width="103.5dp"
+                android:layout_marginLeft="90.5dp"
+                android:layout_marginRight="24.0dp" />
+        </TableRow>
+    </TableLayout>
+    <Spinner
+        android:id="@+id/changes_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Details To Change:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ChangeFrom"
+        android:singleLine="true" />
+    <TextView
+        android:text="Change Details To:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ChangeTo"
+        android:singleLine="true" />
+    <Button
+        android:text="GetMyLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GPS"
+        android:visibility="invisible" />
+</LinearLayout>

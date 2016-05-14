@@ -24,6 +24,26 @@ namespace MobileRolloutManager
         public int markerColor { get; set; }
 
     }
+
+    public class Changes
+    {
+        public string Id { get; set; }
+        public string SiteId {get;set;}
+        public string Area { get; set; }
+        public string FieldToChange { get; set; }
+        public string ToChange { get; set; }
+        public string Created { get; set; }
+        public string CreatedBy { get; set; }
+        public string Changed { get; set; }
+
+    }
+
+    public class Areas
+    {
+        public string Area { get; set; }
+    }
+
+
     public class ResultSet
     {
 

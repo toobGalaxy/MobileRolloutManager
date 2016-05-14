@@ -57,7 +57,7 @@ namespace MobileRolloutManager
         List<Bitmap> signatures = new List<Bitmap>();
         List<string> signedNames = new List<string>();
         List<string> instNames = new List<string>();
-
+       
         List<Bitmap> Attendencesignatures = new List<Bitmap>();
         List<string> AttendsignedNames = new List<string>();
         List<string> AttendDesig = new List<string>();
@@ -65,11 +65,13 @@ namespace MobileRolloutManager
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-     
+            
          
             var progressDialog = ProgressDialog.Show(this, "", "Loading Sites...", true);
             progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+           
             progressDialog.Indeterminate = true;
+            
             _locMan = GetSystemService(Context.LocationService) as LocationManager;
             //You can now use and reference the ActionBar
 
@@ -195,6 +197,7 @@ namespace MobileRolloutManager
             try
             {
                 disable = 0;
+                
                 SetContentView(Resource.Layout.Sites);
                 ActionBar.Title = "My Sites";
                 lis = FindViewById<ListView>(Resource.Id.listing);
@@ -290,7 +293,9 @@ namespace MobileRolloutManager
                     var progressDialog = ProgressDialog.Show(this, "", "Loading All Your Sites...", true);
                     progressDialog.Indeterminate = true;
                     progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-                    SetContentView(Resource.Layout.AllSites);
+               
+                SetContentView(Resource.Layout.AllSites);
+                   
                     ASiteBack = FindViewById<Button>(Resource.Id.allsitesBack);
 
                     ASiteBack.Click += async (sender, e) =>
@@ -305,11 +310,18 @@ namespace MobileRolloutManager
                     lis3 = FindViewById<ListView>(Resource.Id.list3);
                     ActionBar.Title = "All My Sites";
                     List<SiteList> listitems = await FetchAllSitesAsync(Constants.UserIdd);
+
+
                     List<string> AdapterList = new List<string>();
+                    foreach (var item in listitems) {
+                    AdapterList.Add("Id: " + item.EmisNumber + " Site:" + item.SiteName);
+
+                }
+
                     ArrayAdapter adapter = new ArrayAdapter(
                                         this, //Context, typically the Activity
                                         Android.Resource.Layout.SimpleListItem1, //The layout. How the data will be presented 
-                                        listitems //The enumerable data
+                                        AdapterList //The enumerable data
                                     );
                     lis3.Adapter = adapter;
                 lis3.ItemClick += async (object sender, Android.Widget.AdapterView.ItemClickEventArgs e) =>
@@ -317,7 +329,29 @@ namespace MobileRolloutManager
                     selectSite = listitems[e.Position].Id;
                     await loadSite(selectSite.ToString());
                 };
+                Button search = FindViewById<Button>(Resource.Id.searchBtn);
 
+                SearchView searchText = FindViewById<SearchView>(Resource.Id.searchText);
+                search.Click += async (sender, e) =>
+                {
+                    if (searchText.Query.ToString().Length < 1)
+                    {
+                        var pop = new AlertDialog.Builder(this);
+                        AlertDialog dialog = null;
+                        pop.SetMessage("Search is empty");
+                        pop.SetTitle("Error");
+
+                        pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                        dialog = pop.Create();
+                        dialog.Show();
+
+
+                    }
+                    else { await LoadSearch(searchText.Query.ToString()); }
+                  
+                    // SetContentView(Resource.Layout.Sites);
+
+                };
                 progressDialog.Dismiss();
                     // lis.SetAdapter(new ArrayAdapter(this, Resource.Id.list, listitems));
                     //  lis.Adapter = 
@@ -374,7 +408,13 @@ namespace MobileRolloutManager
             ActionBar.Title = "Start Installation Process";
             TextView SN = FindViewById<TextView>(Resource.Id.SiteName);
             SN.Text = SiteNames;
-          
+
+
+            Button Finish = FindViewById<Button>(Resource.Id.Finish);
+            Finish.Click += async (sender, e) =>
+            {
+                await FinishSite(ids);
+            };
 
             Button Back = FindViewById<Button>(Resource.Id.InstBack);
             Back.Click += async (sender, e) =>
@@ -430,8 +470,51 @@ namespace MobileRolloutManager
             };
             
 
-        }       
+        }
 
+
+
+        private async Task FinishSite(string ids) {
+            string yes = "0";
+            AlertDialog dialog = null;
+            var pop = new AlertDialog.Builder(this);
+            pop.SetMessage("Are you sure you want to Finish this site? This will remove the site from your list and mark the status as completed.");
+            pop.SetTitle("Message");
+            pop.SetPositiveButton("Yes", async delegate
+            {
+                var client = new RestClient(Constants.sp_FinishSite);
+                string userName = "app@itgalaxy.co.za";
+                string passWord = "Internet1@#";
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/zip");
+                client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddHeader("Accept", "application/json");
+                request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + ids + "\",      \"type\": \"int\"    }]}", ParameterType.RequestBody);
+
+                var response = client.Execute(request);
+
+                if (!response.Content.Contains("[]"))
+                {
+                    Log.Info("Re", @"				sp_FinishSite {0}", response.Content.ToString());
+                    dialog = null;
+                    pop = new AlertDialog.Builder(this);
+                    pop.SetMessage("Site Finished");
+                    pop.SetTitle("Message");
+                    pop.SetNeutralButton("ok", delegate { });
+                    dialog = pop.Create();
+                    dialog.Show();
+                    await load();
+                }
+            });
+            pop.SetNegativeButton("No", delegate { });
+            dialog = pop.Create();
+            dialog.Show();
+
+           
+
+        }
         private async Task LoadSignOffs(string ids, string SiteNames) {
             var progressDialog = ProgressDialog.Show(this, "", "Loading...", true);
             progressDialog.Indeterminate = true;
@@ -2086,33 +2169,34 @@ namespace MobileRolloutManager
                 Edit.Click += async (sender, e) =>
 
                 {
-                    await load();
+                    await LoadChanges(ids,SiteV.Text);
                     // SetContentView(Resource.Layout.Sites);
 
                 };
 
-                Dialing.Click += async (sender, e) =>
+                Dialing.Click += (sender, e) =>
 
                 {
-                    await load();
-                    // SetContentView(Resource.Layout.Sites);
+                    var uri = Android.Net.Uri.Parse("tel:" + SiteTelV.Text);
+                    var intent = new Intent(Intent.ActionDial, uri);
+                    StartActivity(intent);
 
                 };
 
-                person.Click += async (sender, e) =>
+                person.Click += (sender, e) =>
 
                 {
-                    await load();
-                    // SetContentView(Resource.Layout.Sites);
+                    var uri = Android.Net.Uri.Parse("tel:"+ PersonTelV.Text);
+                    var intent = new Intent(Intent.ActionDial, uri);
+                    StartActivity(intent);
 
                 };
 
                 notes.Click += async (sender, e) =>
 
                 {
-                    await LoadSiteNotes(SiteIdV.Text, SiteV.Text);
-                    // SetContentView(Resource.Layout.Sites);
-
+                    await LoadSiteNotes(ids, SiteV.Text);
+       
                 };
 
 
@@ -2616,7 +2700,7 @@ namespace MobileRolloutManager
                 List<string> AdapterList = new List<string>();
                 foreach (var item in listitems)
                 {
-                    Displaylistitems.Add("Created By: " + item.CreatedBy +" Created On:"+ item.Created + " \n Note: " + item.Notes);
+                    Displaylistitems.Add("Created By: " + item.CreatedBy +" Created On:"+ item.Created.Substring(0,10) + " \n Note: " + item.Notes);
                 }
 
 
@@ -2766,10 +2850,8 @@ namespace MobileRolloutManager
             List<SiteNotes> items = new List<SiteNotes>();
             try
             {
-                await Task.Run(() =>
-
-                {
-                    var client = new RestClient(Constants.sp_GetIssueInfo);
+               
+                    var client = new RestClient(Constants.sp_GetSiteNotes);
                     string userName = "app@itgalaxy.co.za";
                     string passWord = "Internet1@#";
                     var request = new RestRequest(Method.POST);
@@ -2793,7 +2875,7 @@ namespace MobileRolloutManager
                         items = jj;
                     }
 
-                });
+             
 
                 if (items != null)
                 {
@@ -2815,6 +2897,426 @@ namespace MobileRolloutManager
 
             }
         }
+
+
+
+        private async Task LoadChanges(string ids, string SiteName)
+        {
+            var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+
+            SetContentView(Resource.Layout.ChangeRequest);
+            ActionBar.Title = "Site Change Request";
+            List<Changes> listitems = await FetchChangesById(ids);
+            List<string> Displaylistitems = new List<string>();
+            ListView listV = FindViewById<ListView>(Resource.Id.listChanges);
+            if (listitems.Count > 0)
+            {
+                List<string> AdapterList = new List<string>();
+                foreach (var item in listitems)
+                {
+                    Displaylistitems.Add("Created By: " + item.CreatedBy + " Created On:" + item.Created.Substring(0, 10) + " \n Change From: " + item.FieldToChange + "\n Change To:" + item.ToChange);
+                }
+
+
+                ArrayAdapter adapter = new ArrayAdapter(
+                                    this, //Context, typically the Activity
+                                    Android.Resource.Layout.SimpleListItem1, //The layout. How the data will be presented 
+                                    Displaylistitems //The enumerable data
+                                );
+                listV.Adapter = adapter;
+
+            }
+
+
+            Button Back = FindViewById<Button>(Resource.Id.ChangeDetailsBack);
+            Back.Click += async (sender, e) =>
+
+            {
+                await loadSite(ids);
+                // SetContentView(Resource.Layout.Sites);
+            };
+
+            Button Add = FindViewById<Button>(Resource.Id.AddChange);
+            Add.Click += async (sender, e) =>
+
+            {
+                await LoadChangesAdd(ids, SiteName);
+
+
+            };
+            progressDialog.Dismiss();
+        }
+        private async Task LoadChangesAdd(string ids, string SiteName)
+        {
+            SetContentView(Resource.Layout.ChangeRequestAdd);
+            ActionBar.Title = "New Change Request";
+            Button Back = FindViewById<Button>(Resource.Id.ChangeDetailsSaveBack);
+            Button save = FindViewById<Button>(Resource.Id.ChangeDetailsSave);
+            EditText from = FindViewById<EditText>(Resource.Id.ChangeFrom);
+            EditText changeTo = FindViewById<EditText>(Resource.Id.ChangeTo);
+            Spinner spinSelect = FindViewById<Spinner>(Resource.Id.changes_spinner);
+            Button gps = FindViewById<Button>(Resource.Id.GPS);
+          
+
+            string selectedChangeArea = "";
+
+            List<string> listitems = await FetchChangeTypes();
+
+            if (listitems.Count > 0)
+            {
+
+
+                ArrayAdapter adapter = new ArrayAdapter(
+                                    this, //Context, typically the Activity
+                                    Android.Resource.Layout.SimpleDropDownItem1Line, //The layout. How the data will be presented 
+                                    listitems //The enumerable data
+                                );
+                spinSelect.Adapter = adapter;
+                spinSelect.ItemSelected += (object sender, Android.Widget.AdapterView.ItemSelectedEventArgs e) =>
+                {
+                    selectedChangeArea = listitems[e.Position].ToString();
+
+                    if (selectedChangeArea == "GPS Details")
+                    {
+                        gps.Visibility = ViewStates.Visible;
+
+                    }
+                    else { gps.Visibility = ViewStates.Invisible; }
+
+
+                };
+
+           
+                }
+                gps.Click += (sender, e) =>
+
+                {
+
+                    changeTo.Text = "Latitude:" + MyLocation.Latitude.ToString() + " Longitude:" + MyLocation.Longitude.ToString();
+
+                };
+
+
+                Back.Click += async (sender, e) =>
+
+            {
+
+                await LoadChanges(ids, SiteName);
+
+            };
+
+
+            save.Click += async (sender, e) =>
+
+            {
+
+                Changes ss = new Changes();
+                ss.ToChange = changeTo.Text;
+                ss.FieldToChange = from.Text;
+                ss.Area = selectedChangeArea;
+                ss.SiteId = ids;
+
+                string result = await LoadSaveChanges(ss);
+
+                if (result == "1")
+                {
+                    var pop = new AlertDialog.Builder(this);
+                    AlertDialog dialog = null;
+                    pop.SetMessage("Save was a Success!");
+                    pop.SetTitle("Save Message");
+
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                    dialog.Show();
+                    await LoadChanges(ids, SiteName);
+                }
+                else
+                {
+
+                    var pop = new AlertDialog.Builder(this);
+                    AlertDialog dialog = null;
+                    pop.SetMessage("Save was a unsuccessfull! Try again or check your values.");
+                    pop.SetTitle("Save Message");
+                    pop.SetNeutralButton("OK", delegate { OnDismissAlert(dialog); });
+                    dialog = pop.Create();
+                    dialog.Show();
+                }
+                // SetContentView(Resource.Layout.Sites);
+            };
+        }
+        private async Task<string> LoadSaveChanges(Changes nn)
+        {
+            string retu = "0";
+            var progressDialog = ProgressDialog.Show(this, "", "Loading ...", true);
+            progressDialog.Indeterminate = true;
+            progressDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            try
+            {
+
+
+                await Task.Run(() =>
+
+                {
+
+                    var client = new RestClient(Constants.sp_GetInsertChanges);
+                    string userName = "app@itgalaxy.co.za";
+                    string passWord = "Internet1@#";
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("Content-Type", "application/zip");
+                    client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                    request.RequestFormat = DataFormat.Json;
+                    request.AddHeader("Accept", "application/json");
+
+                    string ParText = "{      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + nn.SiteId + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"Area\",      \"param_type\": \"IN\",      \"value\": \"" + nn.Area + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"FieldToChange\",      \"param_type\": \"IN\",      \"value\": \"" + Regex.Replace(nn.FieldToChange, @"\r\n?|\n", " ") + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"ToChange\",      \"param_type\": \"IN\",      \"value\": \"" + Regex.Replace(nn.ToChange, @"\r\n?|\n", " ") + "\",      \"type\": \"string\"    },";
+                    ParText += "{      \"name\": \"CreatedBy\",      \"param_type\": \"IN\",      \"value\": \"" + Constants.Username + "\",      \"type\": \"string\"    }";
+
+                    request.AddParameter("application/json", "{ \"params\": [" + ParText + "]}", ParameterType.RequestBody);
+
+                    var response = client.Execute(request);
+
+                    Log.Info("Re", @"				LoadSaveSiteNotes {0}", response.Content.ToString());
+
+                    List<ResultSet> jj = JsonConvert.DeserializeObject<List<ResultSet>>(response.Content);
+
+                    if (jj.Count > 0)
+                    {
+                        retu = jj[0].result;
+                    }
+                    progressDialog.Dismiss();
+                    return retu;
+                });
+                progressDialog.Dismiss();
+                return retu;
+            }
+            catch (Exception ex)
+            {
+                progressDialog.Dismiss();
+                Log.Info("Changes", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
+
+            }
+
+        }
+        private async Task<List<Changes>> FetchChangesById(string ids)
+        {
+            List<Changes> items = new List<Changes>();
+            try
+            {
+
+                var client = new RestClient(Constants.sp_GetChangeById);
+                string userName = "app@itgalaxy.co.za";
+                string passWord = "Internet1@#";
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/zip");
+                client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddHeader("Accept", "application/json");
+                request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"SiteId\",      \"param_type\": \"IN\",      \"value\": \"" + ids + "\",      \"type\": \"int\"    }]}", ParameterType.RequestBody);
+
+                var response = client.Execute(request);
+
+                Log.Info("Re", @"				FetchAssetsBySiteId {0}", response.Content.ToString());
+                if (!response.Content.Contains("[]"))
+                {
+                    Log.Info("Re", @"				FetchAssetsBySiteId {0}", response.Content.ToString());
+
+                    List<Changes> jj = JsonConvert.DeserializeObject<List<Changes>>(response.Content);
+
+
+                    items = jj;
+                }
+
+
+
+                if (items != null)
+                {
+                    return items;
+                }
+
+
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                Log.Info("Changes", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
+
+            }
+        }
+
+
+        private async Task<List<string>> FetchChangeTypes()
+        {
+            List<string> items = new List<string>();
+            try
+            {
+
+                var client = new RestClient(Constants.sp_GetChangeTypes);
+                string userName = "app@itgalaxy.co.za";
+                string passWord = "Internet1@#";
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/zip");
+                client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                request.RequestFormat = DataFormat.Json;
+                request.AddHeader("Accept", "application/json");
+              
+                var response = client.Execute(request);
+
+                Log.Info("Re", @"				FetchAssetsBySiteId {0}", response.Content.ToString());
+                if (!response.Content.Contains("[]"))
+                {
+                    Log.Info("Re", @"				FetchAssetsBySiteId {0}", response.Content.ToString());
+
+                    List<Areas> jj = JsonConvert.DeserializeObject<List<Areas>>(response.Content);
+                    items.Add("Select Area To Change");
+                    foreach (var itt in jj) {
+                        items.Add(itt.Area);
+                    }
+
+                    
+                }
+
+
+
+                if (items != null)
+                {
+                    return items;
+                }
+
+
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                Log.Info("Changes", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
+
+            }
+        }
+
+       
+        private async Task LoadSearch(string Query)
+        {
+
+            try
+            {
+                disable = 0;
+                SetContentView(Resource.Layout.SearchResults);
+                ActionBar.Title = "Search Results";
+                
+                ListView listSearc = FindViewById<ListView>(Resource.Id.listSearch);
+                items = new List<SiteList>();
+
+                List<SiteList> listitems = await FetchSearchSitesAsync(Query);
+                List<string> AdapterList = new List<string>();
+                if (listitems.Count > 0)
+                {
+                    disable += 1;
+                    foreach (var itemL in listitems)
+                    {
+                        AdapterList.Add("Id " + itemL.EmisNumber + " - " + itemL.SiteName);
+                    }
+                    ArrayAdapter adapters = new ArrayAdapter(
+                                        this, //Context, typically the Activity
+                                        Android.Resource.Layout.SimpleListItem1, //The layout. How the data will be presented 
+                                        AdapterList //The enumerable data
+                                    );
+                    listSearc.Adapter = adapters;
+                    listSearc.ItemClick += async (object sender, Android.Widget.AdapterView.ItemClickEventArgs e) =>
+                    {
+                        selectSite = listitems[e.Position].Id;
+                        await loadSite(selectSite.ToString());
+                    };
+                }
+
+                Button Back = FindViewById<Button>(Resource.Id.searchBack);
+                Back.Click += async (sender, e) =>
+
+                {
+                    await loadAllSites();
+                    // SetContentView(Resource.Layout.Sites);
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+
+                Log.Info("Debug Adapters", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+
+
+            }
+            // lis.SetAdapter(new ArrayAdapter(this, Resource.Id.list, listitems));
+            //  lis.Adapter = 
+
+        }
+
+        private async Task<List<SiteList>> FetchSearchSitesAsync(string query)
+        {
+
+            try
+            {
+                await Task.Run(() =>
+
+                {
+                    var client = new RestClient(Constants.sp_SearchSites);
+                    string userName = "app@itgalaxy.co.za";
+                    string passWord = "Internet1@#";
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("Content-Type", "application/zip");
+                    client.Authenticator = new HttpBasicAuthenticator(userName, passWord);
+
+                    request.RequestFormat = DataFormat.Json;
+                    request.AddHeader("Accept", "application/json");
+                    request.AddParameter("application/json", "{ \"params\": [    {      \"name\": \"Search\",      \"param_type\": \"IN\",      \"value\": \"" + query + "\",      \"type\": \"string\"    },{      \"name\": \"UserId\",      \"param_type\": \"IN\",      \"value\": \"" + Constants.UserIdd + "\",      \"type\": \"string\"    }]}", ParameterType.RequestBody);
+
+                    var response = client.Execute(request);
+
+                    Log.Info("Re", @"				Search {0}", response.Content.ToString());
+
+                    List<SiteList> jj = JsonConvert.DeserializeObject<List<SiteList>>(response.Content);
+
+                    items = jj;
+
+                });
+                return items;
+
+            }
+            catch (Exception ex)
+            {
+
+
+                Log.Info("Search", @"				ERROR {0}", ex.Message);
+
+                Console.WriteLine(@"				ERROR {0}", ex.Message);
+                return null;
+
+            }
+        }
+
+
     }
 
 }

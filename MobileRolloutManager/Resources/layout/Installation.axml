@@ -60,4 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Notes" />
+    <Button
+        android:text="Finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Finish" />
 </LinearLayout>
